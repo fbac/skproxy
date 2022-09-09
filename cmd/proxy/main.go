@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/fly-hiring/platform-challenge/pkg/config"
+	"github.com/fbac/proxy-tcp-roundrobin/pkg/config"
 )
 
 const (

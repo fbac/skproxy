@@ -1,4 +1,4 @@
-module github.com/fly-hiring/platform-challenge
+module github.com/fbac/proxy-tcp-roundrobin/pkg/config
 
 go 1.17
 
