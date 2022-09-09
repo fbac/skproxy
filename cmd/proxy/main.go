@@ -48,7 +48,7 @@ func main() {
 	go func() {
 		for cfg := range ch {
 			fmt.Println("got config change:", cfg)
-			// pm.ReloadProxy(cfg)
+			// TODO: pm.ReloadProxy(cfg)
 		}
 	}()
 
@@ -103,15 +103,6 @@ func (pm ProxyMap) populateProxyMap(cfg *config.ConfigStore) {
 	}
 }
 
-// getApps returns all the Apps in a ProxyMap
-func (pm ProxyMap) getApps() []string {
-	var apps []string
-	for k := range pm {
-		apps = append(apps, k)
-	}
-	return apps
-}
-
 // getFrontends returns all the listener ports for a given App
 func (pm ProxyMap) getFrontends(host string) []int {
 	var fe []int
@@ -134,25 +125,18 @@ func (pm ProxyMap) InitializeProxy(cfg *config.ConfigStore) {
 	for app := range pm {
 		frontends := pm.getFrontends(app)
 		backends := pm.getBackends(app)
-		prepareProxy(frontends, backends)
+		doProxy(frontends, backends)
 	}
 }
 
 // prepareProxy is an intermediate step to configure the loadbalancer
 // also makes the app extensible for the future, to add additional checks here
 // TODO this should be run in a context
-func prepareProxy(fe []int, be []string) {
+func doProxy(fe []int, be []string) {
 	lb := NewLB(be)
-	doProxy(fe, *lb)
-}
 
-// doProxy handles the creation of proxy goroutines
-// from the specified frontend to a loadbalancer containing all the backends
-// same as prepareProxy, it also servers the purpose of an intermediate step for future additions
-// TODO this should be run in a context
-func doProxy(fe []int, lb RoundRobinLB) {
 	for _, f := range fe {
-		go proxy(f, lb)
+		go proxy(f, *lb)
 	}
 }
 
