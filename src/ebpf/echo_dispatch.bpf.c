@@ -18,20 +18,20 @@
 /* Declare BPF maps */
 
 /* List of open echo service ports. Key is the port number. */
-struct bpf_map_def SEC("maps") echo_ports = {
-	.type		= BPF_MAP_TYPE_HASH,
-	.max_entries	= 1024,
-	.key_size	= sizeof(__u16),
-	.value_size	= sizeof(__u8),
-};
+struct {
+	__uint(type, BPF_MAP_TYPE_HASH);
+	__type(key, __u16);
+	__type(value, __u8);
+	__uint(max_entries, 1024);
+} echo_ports SEC(".maps");
 
 /* Echo server socket */
-struct bpf_map_def SEC("maps") echo_socket = {
-	.type		= BPF_MAP_TYPE_SOCKMAP,
-	.max_entries	= 1,
-	.key_size	= sizeof(__u32),
-	.value_size	= sizeof(__u64),
-};
+struct {
+	__uint(type, BPF_MAP_TYPE_SOCKMAP);
+	__type(key, __u32);
+	__type(value, __u64);
+	__uint(max_entries, 1);
+} echo_socket SEC(".maps");
 
 /* Dispatcher program for the echo service */
 SEC("sk_lookup/echo_dispatch")
