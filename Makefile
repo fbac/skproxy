@@ -26,7 +26,7 @@ build: bin/echo_dispatch.bpf.o
 run: build
 	@echo -e "\n# running fly-proxy"
 	${BIN_DIR}/${BIN_NAME} &
-	@echo -e "\n# wait until all listerners are ready"
+	@echo -e "\n# wait until all listeners are ready"
 	@sleep 0.5
 
 test: run
@@ -37,17 +37,16 @@ stop:
 	@echo -e "\n# kill fly-proxy"
 	@pkill ${BIN_NAME}
 
+# ebpf objects are cleaned by the deferred functions in ebpf.go
+# the following rm are in place just in case they're needed explicitly for some reason
 clean: stop
-	@echo -e "# clean fly-proxy"
+	@echo -e "# clean fly-proxy and ebpf objects"
 	@rm ${BIN_DIR}/${BIN_NAME}
-
-clean-leftovers: clean
-	@echo -e "# cleaning fly-proxy and ebpf leftovers"
 	@rm /sys/fs/bpf/*-five-thousand
 	@rm /sys/fs/bpf/*-six-thousand
 	@rm /sys/fs/bpf/*-seven-thousand
 
-all: test clean clean-leftovers
+all: test clean
 	@echo -e "# all done"
 
 ########

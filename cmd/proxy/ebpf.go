@@ -11,6 +11,7 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/link"
+	"github.com/cilium/ebpf/rlimit"
 )
 
 const (
@@ -23,15 +24,19 @@ const (
 )
 
 func InitializeEbpfProg(app string, listener *net.TCPListener, ports []uint16, ctx context.Context) {
+	// Allow locking memory for eBPF resources
+	if err := rlimit.RemoveMemlock(); err != nil {
+		log.Fatal(err)
+	}
+
 	// Get path where fly-proxy is running
 	cmd, err := os.Executable()
 	if err != nil {
 		panic(err)
 	}
-	binPath := fmt.Sprintf("%s/%s", filepath.Dir(cmd), filename)
 
 	// Load the eBPF elf binary
-	spec, err := ebpf.LoadCollectionSpec(binPath)
+	spec, err := ebpf.LoadCollectionSpec(filepath.Join(filepath.Dir(cmd), filename))
 	if err != nil {
 		panic(err)
 	}
@@ -108,8 +113,8 @@ func InitializeEbpfProg(app string, listener *net.TCPListener, ports []uint16, c
 	lnk.Pin(dispatchLinkApp)
 
 	// Don't forget to close everything
-	defer lnk.Unpin()
 	defer lnk.Close()
+	defer lnk.Unpin()
 
 	// Wait until done
 	<-ctx.Done()

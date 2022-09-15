@@ -1,8 +1,18 @@
+# Usage - important to read
+
+**IMPORTANT!**
+
+- Check the Makefile carefully!
+  - Always run the proxy with root user, otherwise the ebpf can't be loaded.
+  - Make sure `echo_dispatch.bpf.o` exist in the bin folder.
+- To run the proxy manually, run `sudo go run cmd/proxy/*.go` or `sudo make run`.
+- To run a full e2e test, run `sudo make all`
+
 # Platform Engineer Hiring Project
 
 Hello! This is a hiring project for our [Platform Engineer position](https://fly.io/jobs/platform-product-engineer/). If you apply, we'll ask you to do this project so we can see how you work through a contrived (yet shockingly accurate) example of the type of things you'd do at Fly.io.
 
-## The Job 
+## The Job
 
 As a Platform Engineer at Fly.io, you'll be working on the product we sell to customers and the infrastructure needed to operate it. Checkout the [job post](https://fly.io/jobs/platform-product-engineer/) for the nitty gritty.
 
