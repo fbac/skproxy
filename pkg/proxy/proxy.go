@@ -10,7 +10,7 @@ import (
 
 	"github.com/fbac/sklookup-go/pkg/ebpf"
 	"github.com/fbac/skproxy/pkg/config"
-	lb "github.com/fbac/skproxy/pkg/lb"
+	"github.com/fbac/skproxy/pkg/lb"
 )
 
 // ProxyMap represents a proxy map, where the key is the app to be proxied
@@ -99,7 +99,12 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 	}
 	defer listener.Close()
 	log.Println("started listener in", l)
-	go ebpf.NewEbpfDispatcher(app, os.Getpid(), p, "debug").InitializeDispatcher()
+
+	// Get pid
+	pid := os.Getppid()
+
+	// Initialize ebpf
+	ebpf.NewEbpfDispatcher(app, pid, p, "debug").InitializeDispatcher()
 
 	// Loop indefinitely to catch new connections
 	for {
