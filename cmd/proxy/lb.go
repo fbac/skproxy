@@ -3,6 +3,11 @@ package main
 import (
 	"errors"
 	"log"
+	"time"
+)
+
+const (
+	MaxTimeout = 2 * time.Second
 )
 
 // RoundRobinLB represents a simple round robin loadbalancer
