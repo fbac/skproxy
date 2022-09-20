@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/fbac/proxy-tcp-roundrobin/pkg/config"
+	"github.com/fbac/skproxy/pkg/config"
 )
 
 func main() {
@@ -49,14 +49,4 @@ func newCancelableContext() context.Context {
 	}()
 
 	return ctx
-}
-
-// getCurrCfg returns the current config.Config
-func getCurrCfg(cfg *config.ConfigStore) config.Config {
-	currCfg, err := cfg.Read()
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	return currCfg
 }
