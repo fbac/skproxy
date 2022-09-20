@@ -69,6 +69,7 @@ func (pm ProxyMap) ReloadProxy(cfg config.Config) {}
 // TODO this should be run in a context
 func doProxy(app string, fe []int, be []string, ctx context.Context) {
 	lbalancer := lb.NewLB(be)
+	fmt.Println("created lb")
 	go proxy(app, fe, *lbalancer, ctx)
 }
 
@@ -101,7 +102,7 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 	log.Println("started listener in", l)
 
 	// Get pid
-	pid := os.Getppid()
+	pid := os.Getpid()
 
 	// Initialize ebpf
 	go ebpf.NewEbpfDispatcher(app, pid, p, "debug").InitializeDispatcher()
