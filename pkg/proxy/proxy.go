@@ -104,7 +104,7 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 	pid := os.Getppid()
 
 	// Initialize ebpf
-	ebpf.NewEbpfDispatcher(app, pid, p, "debug").InitializeDispatcher()
+	go ebpf.NewEbpfDispatcher(app, pid, p, "debug").InitializeDispatcher()
 
 	// Loop indefinitely to catch new connections
 	for {
