@@ -4,10 +4,7 @@
 
 **IMPORTANT!**
 
-- Check the Makefile carefully!
-  - Always run the proxy with root user, otherwise the ebpf can't be loaded.
-  - Make sure `echo_dispatch.bpf.o` exist in the bin folder.
-- To run the proxy manually, run `sudo go run cmd/proxy/*.go` or `sudo make run`.
+- To run the proxy manually, run `sudo go run cmd/main.go` or `sudo make run`.
 - To run a full e2e test, run `sudo make all`
 
 ### Versions tested

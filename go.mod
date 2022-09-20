@@ -1,4 +1,4 @@
-module github.com/fbac/proxy-tcp-roundrobin
+module github.com/fbac/skproxy
 
 go 1.17
 
