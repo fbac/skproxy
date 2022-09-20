@@ -36,7 +36,7 @@ func NewLB(be []string) *RoundRobinLB {
 
 // selectBackend selects the next backend
 // it implements a round robin logic (roughly tbh)
-func (lb *RoundRobinLB) selectBackend() string {
+func (lb *RoundRobinLB) SelectBackend() string {
 	var be string
 	if len(lb.Backend) > 0 {
 		be = lb.Backend[lb.NextBackend%len(lb.Backend)]

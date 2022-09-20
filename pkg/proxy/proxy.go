@@ -8,7 +8,7 @@ import (
 	"net"
 
 	"github.com/fbac/skproxy/pkg/config"
-	"github.com/fbac/skproxy/pkg/lb"
+	lb "github.com/fbac/skproxy/pkg/lb"
 )
 
 // ProxyMap represents a proxy map, where the key is the app to be proxied
@@ -66,8 +66,8 @@ func (pm ProxyMap) ReloadProxy(cfg config.Config) {}
 // also makes the app extensible for the future, to add additional checks here
 // TODO this should be run in a context
 func doProxy(app string, fe []int, be []string, ctx context.Context) {
-	lb := NewLB(be)
-	go proxy(app, fe, *lb, ctx)
+	lbalancer := lb.NewLB(be)
+	go proxy(app, fe, *lbalancer, ctx)
 }
 
 // proxy handles the proxy logic
@@ -75,7 +75,7 @@ func doProxy(app string, fe []int, be []string, ctx context.Context) {
 // meaning that in the low level what it does is redirecting the socket file descriptor, so the connection is copied/proxied transparently
 // this way we make sure the correct listeners will be tied to the correct backend apps
 // TODO Each proxy should be run in a context
-func proxy(app string, fe []int, lb lb.RoundRobinLB, ctx context.Context) {
+func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context) {
 	// Create listener and ports
 	l := fmt.Sprintf(":%v", fe[0])
 	var p []uint16
@@ -108,7 +108,7 @@ func proxy(app string, fe []int, lb lb.RoundRobinLB, ctx context.Context) {
 		}
 
 		// Select next backend
-		backend := lb.selectBackend()
+		backend := lbalancer.selectBackend()
 		log.Printf("proxying data from %v to %s", l, backend)
 		go func() {
 			b, err := net.Dial("tcp", backend)

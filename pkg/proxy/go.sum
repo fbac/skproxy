@@ -1,0 +1,8 @@
+github.com/fbac/skproxy/pkg/config v0.0.0-20220920082028-1a40e8b88c74 h1:G6hnvMv95ji3DANZRK4Vnbv7EkdIhrFXbKZjS9PcZ3Q=
+github.com/fbac/skproxy/pkg/config v0.0.0-20220920082028-1a40e8b88c74/go.mod h1:Fpk23nPU88xWm8Rj93ycweowMZ1k8yiE3TgDZVOGW8U=
+github.com/fbac/skproxy/pkg/lb v0.0.0-20220920082028-1a40e8b88c74 h1:BWSY9TXjTqaeg4VZEsEOeXF6AHmcrCmJr5jJkchNHtE=
+github.com/fbac/skproxy/pkg/lb v0.0.0-20220920082028-1a40e8b88c74/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
+github.com/fsnotify/fsnotify v1.5.4 h1:jRbGcIw6P2Meqdwuo0H1p6JVLbL5DHKAKlYndzMwVZI=
+github.com/fsnotify/fsnotify v1.5.4/go.mod h1:OVB6XrOHzAwXMpEM7uPOzcehqUV2UqJxmVXmkdnm1bU=
+golang.org/x/sys v0.0.0-20220412211240-33da011f77ad h1:ntjMns5wyP/fN65tdBD4g8J5w8n015+iIIs9rtjXkY0=
+golang.org/x/sys v0.0.0-20220412211240-33da011f77ad/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
