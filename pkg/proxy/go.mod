@@ -3,7 +3,7 @@ module github.com/fbac/skproxy/pkg/proxy
 go 1.18
 
 require (
-	github.com/fbac/sklookup-go v0.0.0-20220920092320-b417765b7a63
+	github.com/fbac/sklookup-go v0.1.0-alpha
 	github.com/fbac/skproxy/pkg/config v0.0.0-20220920082028-1a40e8b88c74
 	github.com/fbac/skproxy/pkg/lb v0.0.0-20220920082028-1a40e8b88c74
 )
