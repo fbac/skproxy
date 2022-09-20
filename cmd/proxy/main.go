@@ -8,6 +8,7 @@ import (
 	"os/signal"
 
 	"github.com/fbac/skproxy/pkg/config"
+	"github.com/fbac/skproxy/pkg/proxy"
 )
 
 func main() {
@@ -25,11 +26,10 @@ func main() {
 	go func() {
 		for cfg := range ch {
 			fmt.Println("got config change:", cfg)
-			// TODO: pm.ReloadProxy(cfg)
 		}
 	}()
 
-	NewProxy().InitializeProxy(cfgStore, ctx)
+	proxy.NewProxy().InitializeProxy(cfgStore, ctx)
 
 	<-ctx.Done()
 }

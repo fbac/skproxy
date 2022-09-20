@@ -1,4 +1,4 @@
-package main
+package proxy
 
 import (
 	"context"
@@ -6,7 +6,9 @@ import (
 	"io"
 	"log"
 	"net"
+	"os"
 
+	"github.com/fbac/sklookup-go/pkg/ebpf"
 	"github.com/fbac/skproxy/pkg/config"
 	lb "github.com/fbac/skproxy/pkg/lb"
 )
@@ -97,7 +99,7 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 	}
 	defer listener.Close()
 	log.Println("started listener in", l)
-	go InitializeEbpfProg(app, listener, p, ctx)
+	go ebpf.NewEbpfDispatcher(app, os.Getpid(), p, "debug").InitializeDispatcher()
 
 	// Loop indefinitely to catch new connections
 	for {
@@ -108,7 +110,7 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 		}
 
 		// Select next backend
-		backend := lbalancer.selectBackend()
+		backend := lbalancer.SelectBackend()
 		log.Printf("proxying data from %v to %s", l, backend)
 		go func() {
 			b, err := net.Dial("tcp", backend)
