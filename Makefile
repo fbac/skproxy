@@ -13,7 +13,7 @@ run: build
 	@echo -e "\n# running skproxy"
 	${BIN_DIR}/${BIN_NAME} &
 	@echo -e "\n# wait until all listeners are ready"
-	@sleep 0.5
+	@sleep 2
 
 test: run
 	@echo -e "\n# executing test-target.sh"
@@ -26,6 +26,10 @@ stop:
 clean: stop
 	@echo -e "# clean skproxy"
 	@rm ${BIN_DIR}/${BIN_NAME}
+	@rm -rf /sys/fs/bpf/*-Frontend*
 
-all: test clean
+clean-ebpf:
+	@rm -rf /sys/fs/bpf/*-Frontend*
+
+all: clean-ebpf test clean clean-ebpf
 	@echo -e "# all done"

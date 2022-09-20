@@ -1,0 +1,33 @@
+{
+  "Apps": [
+    {
+      "Name": "Frontend-01",
+      "Ports": [
+        1025,
+        1026,
+        1027,
+        1028
+      ],
+      "Targets": [
+        "backend-01:1010",
+        "backend-02:2020",
+        "backend-03:3030",
+        "backend-04:4040"
+      ]
+    },
+    {
+      "Name": "Frontend-02",
+      "Ports": [
+        1029,
+        1030,
+        1031,
+        1032
+      ],
+      "Targets": [
+        "backend-05:5050",
+        "unhealthy-backend:1111",
+        "unhealthy-backend:2222"
+      ]
+    }
+  ]
+}

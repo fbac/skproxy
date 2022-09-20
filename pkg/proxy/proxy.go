@@ -68,7 +68,6 @@ func (pm ProxyMap) ReloadProxy(cfg config.Config) {}
 // TODO this should be run in a context
 func doProxy(app string, fe []int, be []string, ctx context.Context) {
 	lbalancer := lb.NewLB(be)
-	fmt.Println("created lb")
 	go proxy(app, fe, *lbalancer, ctx)
 }
 

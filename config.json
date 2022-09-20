@@ -1,7 +1,7 @@
 {
   "Apps": [
     {
-      "Name": "five-thousand",
+      "Name": "Frontend01",
       "Ports": [
         5001,
         5200,
@@ -9,12 +9,12 @@
         5400
       ],
       "Targets": [
-        "tcp-echo.fly.dev:5001",
-        "tcp-echo.fly.dev:5002"
+        "echo.fbac.dev:5001",
+        "echo.fbac.dev:5002"
       ]
     },
     {
-      "Name": "six-thousand",
+      "Name": "Frontend02",
       "Ports": [
         6001,
         6200,
@@ -22,13 +22,13 @@
         6400
       ],
       "Targets": [
-        "tcp-echo.fly.dev:6001",
-        "tcp-echo.fly.dev:6002",
-        "bad.target.for.testing:6003"
+        "echo.fbac.dev:6001",
+        "echo.fbac.dev:6002",
+        "unhealthy-backend:6003"
       ]
     },
     {
-      "Name": "seven-thousand",
+      "Name": "Frontend03",
       "Ports": [
         7001,
         7200,
@@ -36,8 +36,8 @@
         7400
       ],
       "Targets": [
-        "tcp-echo.fly.dev:7001",
-        "tcp-echo.fly.dev:7002"
+        "echo.fbac.dev:7001",
+        "echo.fbac.dev:7002"
       ]
     }
   ]
