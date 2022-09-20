@@ -3,7 +3,6 @@ module github.com/fbac/proxy-tcp-roundrobin
 go 1.17
 
 require (
-	github.com/cilium/ebpf v0.9.1
 	github.com/fbac/skproxy/pkg/config v0.0.0-20220920082720-dd6f927f996d
 	github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920082720-dd6f927f996d
 )

@@ -1,4 +1,4 @@
-# README - PLEASE READ
+# skproxy
 
 ## Usage and Requirements
 
