@@ -20,6 +20,8 @@ github.com/fbac/skproxy/pkg/config v0.0.0-20220920093604-74b92a370bc6 h1:hRWd8sY
 github.com/fbac/skproxy/pkg/config v0.0.0-20220920093604-74b92a370bc6/go.mod h1:Fpk23nPU88xWm8Rj93ycweowMZ1k8yiE3TgDZVOGW8U=
 github.com/fbac/skproxy/pkg/config v0.0.0-20220920144633-0187ea05b221 h1:8MoHUJBmq0FYX1UOjOck37ofVTVL5lX1IVMl3pk1+HI=
 github.com/fbac/skproxy/pkg/config v0.0.0-20220920144633-0187ea05b221/go.mod h1:Fpk23nPU88xWm8Rj93ycweowMZ1k8yiE3TgDZVOGW8U=
+github.com/fbac/skproxy/pkg/config v0.0.0-20220920221335-7d0ed270449f h1:GXOou9xJm7eicSikO937DEbJoicA3EDM6WzzwwZSDK4=
+github.com/fbac/skproxy/pkg/config v0.0.0-20220920221335-7d0ed270449f/go.mod h1:Fpk23nPU88xWm8Rj93ycweowMZ1k8yiE3TgDZVOGW8U=
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920082028-1a40e8b88c74/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920090526-083b0c20d74e h1:qBCPdUja33snhso2GDdm0Zf1EORL+FqbdjWA4nHvttA=
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920090526-083b0c20d74e/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
@@ -29,6 +31,8 @@ github.com/fbac/skproxy/pkg/lb v0.0.0-20220920093604-74b92a370bc6 h1:Xp8spVzzSv4
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920093604-74b92a370bc6/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920144633-0187ea05b221 h1:uzE64k6jSuIzKZ0rRguUzbURcoQAXwS4UPf9f3XVcbw=
 github.com/fbac/skproxy/pkg/lb v0.0.0-20220920144633-0187ea05b221/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
+github.com/fbac/skproxy/pkg/lb v0.0.0-20220920221335-7d0ed270449f h1:CZc4R/vdoMo2vnoThY8GwqvoA/xzb1PTK1p5OZe2KmY=
+github.com/fbac/skproxy/pkg/lb v0.0.0-20220920221335-7d0ed270449f/go.mod h1:hY9xyridpLTv8vE8rDddB/ZUIdKWbWkMl+exn1vC/xk=
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920090526-083b0c20d74e h1:SIj5sEVcKAyL9wYq9OxbryUndg026VVoq4B2xBhU0/Y=
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920090526-083b0c20d74e/go.mod h1:65Slo5XNv0m4lmiPb390k3hMHRX5CXWgvjgWFJJfBa8=
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920092622-22f3f029dfde h1:ooCyV5cLr/m34ZgUvwdZNmnziFKmE/X7lrY+SOBWx2g=
@@ -37,6 +41,8 @@ github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920093604-74b92a370bc6 h1:p3DjCpuc
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920093604-74b92a370bc6/go.mod h1:HCRncwcXHgWWqupFPUesVNxq/zOmbFvE/t2nQ3v25so=
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920144633-0187ea05b221 h1:EXNUUlEBdB8CgfZ3aTYy1pDMmwXVsLthbWGz2Ftp0v0=
 github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920144633-0187ea05b221/go.mod h1:2LmIGPB83ya+xJSV6zLSJdvBMI4pEgE+eFGZkmpBMkA=
+github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920221335-7d0ed270449f h1:Nq6Fl09LERPdPM1usDFrjR7sEtej0d56Aq2cGanZF1Y=
+github.com/fbac/skproxy/pkg/proxy v0.0.0-20220920221335-7d0ed270449f/go.mod h1:2LmIGPB83ya+xJSV6zLSJdvBMI4pEgE+eFGZkmpBMkA=
 github.com/frankban/quicktest v1.14.0 h1:+cqqvzZV87b4adx/5ayVOaYZ2CrvM4ejQvUdBzPPUss=
 github.com/frankban/quicktest v1.14.0/go.mod h1:NeW+ay9A/U67EYXNFA1nPE8e/tnQv/09mUdL/ijj8og=
 github.com/fsnotify/fsnotify v1.5.4 h1:jRbGcIw6P2Meqdwuo0H1p6JVLbL5DHKAKlYndzMwVZI=

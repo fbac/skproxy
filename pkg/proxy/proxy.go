@@ -1,3 +1,19 @@
+/*
+Copyright © 2022 Francisco de Borja Aranda Castillejo me@fbac.dev
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 package proxy
 
 import (
@@ -17,6 +33,9 @@ import (
 // this way we can identify and access apps independently, with complexity O(1)
 type ProxyMap map[string]config.App
 
+// TODO
+//type Backend struct {}
+
 // NewProxyMap returns a new ProxyMap instance
 // TODO this should be run in a context
 func NewProxy() *ProxyMap {
@@ -26,7 +45,11 @@ func NewProxy() *ProxyMap {
 
 // populateProxyMap converts a given ConfigStore to a ProxyMap
 func (pm ProxyMap) populateProxyMap(cfg *config.ConfigStore) {
-	currCfg := getCurrCfg(cfg)
+	currCfg, err := cfg.Read()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	for _, v := range currCfg.Apps {
 		pm[v.Name] = v
 	}
@@ -61,7 +84,7 @@ func (pm ProxyMap) InitializeProxy(cfg *config.ConfigStore, ctx context.Context)
 // TODO: ReloadProxy reloads all the data structures when the configuration is reloaded
 // The process of proxying the applications starts all over when reloadCfg is called
 // Existing connections might be dropped if the data is not handled correctly
-func (pm ProxyMap) ReloadProxy(cfg config.Config) {}
+// func (pm ProxyMap) ReloadProxy(cfg config.Config) {}
 
 // prepareProxy is an intermediate step to configure the loadbalancer
 // also makes the app extensible for the future, to add additional checks here
@@ -128,14 +151,4 @@ func proxy(app string, fe []int, lbalancer lb.RoundRobinLB, ctx context.Context)
 			go io.Copy(c, b)
 		}()
 	}
-}
-
-// getCurrCfg returns the current config.Config
-func getCurrCfg(cfg *config.ConfigStore) config.Config {
-	currCfg, err := cfg.Read()
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	return currCfg
 }
